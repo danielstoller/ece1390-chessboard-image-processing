@@ -12,7 +12,7 @@ This project aims to develop a program capable of locating and extracting a ches
 
 ## Planned Approach
 
-1. **Image Capture and Automation (Stretch Goal)**: Automating image capture via a button-triggered camera module that uploads the image for processing.
+1. **Image Capture and Automation (Stretch Goal)**: Automating image capture and upload via a button-triggered camera module that uploads the image for processing.
 2. **Image Filtering**: Convert the image to grayscale, apply Gaussian blur to remove noise, and adjust brightness and contrast.
 3. **Corner Detection and Grid Segmentation**: Using Harris Corner Detection or Hough Transform to detect chessboard corners and segment the board into an 8x8 grid.
 4. **Piece Identification**: Use template matching and contour detection to distinguish different chess pieces and a pre-trained model to classify piece types.
