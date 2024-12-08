@@ -155,7 +155,25 @@ def connect_square_to_detection(detections, square, boxes):
         return piece
 
 # perspective transforms an image with four given corners
+def transform_image(image, corners):
+    image = asarray(image)
+    rect = order_points(corners)
 
+    maxWidth = 1500; maxHeight = 1500
+
+    # construct set of destination points to obtain a "birds eye view"
+    dst = np.array([
+        [0, 0],
+        [maxWidth, 0],
+        [maxWidth, maxHeight],
+        [0, maxHeight]], dtype = "float32")
+
+    # compute the perspective transform matrix and then apply it
+    M = cv2.getPerspectiveTransform(rect, dst)
+    warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))
+
+    transformed_image = Image.fromarray(warped, "RGB")
+    return transformed_image
 
 def get_fen(img: str) -> str:
     image = cv2.imread(img)
