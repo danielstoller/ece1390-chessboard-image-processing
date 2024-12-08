@@ -45,7 +45,7 @@ This project aims to develop a program capable of locating and extracting a ches
 
 ## Limitations
 - No 50 rule move
-- No En Poissant
+- No En Passant
 - Automated player must be assigned the black pieces
 
 ## Pitfalls and Alternative Solutions
