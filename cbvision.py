@@ -8,6 +8,7 @@ from numpy import asarray
 from PIL import Image
 import cv2
 from shapely.geometry import Polygon
+import re
 
 def order_points(pts):
     
@@ -175,6 +176,15 @@ def transform_image(image, corners):
     transformed_image = Image.fromarray(warped, "RGB")
     return transformed_image
 
+def fix_fen(fen):
+    rows = fen.split("/")
+    fixed_rows = []
+    for row in rows:
+        # Replace consecutive 1s with their count
+        fixed_row = re.sub(r"1+", lambda m: str(len(m.group())), row)
+        fixed_rows.append(fixed_row)
+    return "/".join(fixed_rows)
+
 def get_fen(img: str) -> str:
     image = cv2.imread(img)
 
@@ -231,5 +241,6 @@ def get_fen(img: str) -> str:
 
     complete_board_FEN = [''.join(line) for line in board_FEN]
     to_FEN = '/'.join(complete_board_FEN)
+    correct_fen = fix_fen(to_FEN)
 
-    return to_FEN
+    return correct_fen
