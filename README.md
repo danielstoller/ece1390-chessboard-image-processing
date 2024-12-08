@@ -7,18 +7,20 @@ This project aims to develop a program capable of locating and extracting a ches
 ## Code Specifications
 
 - **Input**: JPG images of various chess positions. For future expansion, video capture at 60 FPS can be used. The only other required input is the player’s turn.
-- **Output**: Tags identifying each piece on the board and the corresponding FEN code, which can be exported into a chess engine for further analysis.
+- **Output**: Tags identifying each piece on the board and the corresponding FEN code, which can be exported into a chess engine for further analysis. The program will use Stockfish chess engine to calculate the next best move for the automated player.
 - **Additional Requirements**: The project can be extended to real-time video processing or image capture automation as a stretch goal.
 
 ## Planned Approach
 
 1. **Image Capture and Automation (Stretch Goal)**: Automating image capture and upload via a button-triggered camera module that uploads the image for processing.
 2. **Image Filtering**: Convert the image to grayscale, apply Gaussian blur to remove noise, and adjust brightness and contrast.
-3. **Corner Detection and Grid Segmentation**: Using Harris Corner Detection or Hough Transform to detect chessboard corners and segment the board into an 8x8 grid.
-4. **Piece Identification**: Use template matching and contour detection to distinguish different chess pieces and a pre-trained model to classify piece types.
-5. **Data Conversion**: Translate identified pieces into FEN or PGN format, which can be understood by chess engines.
-6. **Chess Engine Integration**: Pass the board’s state to a chess engine (like Stockfish) for move evaluation and opponent play.
-7. **Automated Move Output (Stretch Goal)**: Integrate with a physical chess interface or robotic arm to execute the next move.
+3. **Transforming the Image**: Transform the image so the program views it from an overhead angle, making it easier to identify the corners and pieces.
+4. **Corner Detection and Grid Segmentation**: Using YOLO model to detect chessboard corners and segment the board into an 8x8 grid.
+5. **Piece Identification**: Use YOLO to distinguish different chess pieces and a pre-trained model to classify piece types.
+6. **Data Conversion**: Translate identified pieces into FEN format, which can be understood by chess engines.
+7. **Chess Engine Integration**: Pass the board’s state to a chess engine (Stockfish) for move evaluation and opponent play.
+8. **Check Move**: Check that the board's FEN matches the expected FEN based on the best move provided.
+9. **Automated Move Output (Stretch Goal)**: Integrate with a physical chess interface or robotic arm to execute the next move.
 
 ## Timeline
 
@@ -39,7 +41,13 @@ This project aims to develop a program capable of locating and extracting a ches
 
 1. **Board-edge detection**: Successful identification of chessboard edges and 8x8 segmentation, even with pieces on the board.
 2. **Chess Piece Identification**: Accurate distinction of piece types and colors, as well as their correct positioning on the board.
-3. **Data Conversion**: FEN or PGN representation of the game state must accurately reflect the board, with correct piece locations and types.
+3. **Data Conversion**: FEN representation of the game state must accurately reflect the board, with correct piece locations and types.
+
+## Limitations
+- No 50 rule move
+- No En Passant
+- Automated player must be assigned the black pieces
+- The program will assume the player can castle at all times
 
 ## Pitfalls and Alternative Solutions
 
