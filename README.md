@@ -49,6 +49,11 @@ This project aims to develop a program capable of locating and extracting a ches
 - Automated player must be assigned the black pieces
 - The program will assume the player can castle at all times
 
+## Required Libraries
+- chess
+- Stockfish
+- 
+
 ## Pitfalls and Alternative Solutions
 
 - **Piece Identification**: We may encounter difficulties in identifying pieces. If existing code doesn’t work, we’ll need to modify or rewrite it.
