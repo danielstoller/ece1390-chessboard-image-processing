@@ -50,9 +50,19 @@ This project aims to develop a program capable of locating and extracting a ches
 - The program will assume the player can castle at all times
 
 ## Required Libraries
-- chess
-- Stockfish
-- 
+- from ultralytics import YOLO
+- from matplotlib.pyplot import figure
+- import matplotlib.image as image
+- from matplotlib import pyplot as plt
+- import pandas as pd
+- import numpy as np
+- from numpy import asarray
+- from PIL import Image
+- import cv2
+- from shapely.geometry import Polygon
+- import re
+- import cbvision
+- import chess
 
 ## Pitfalls and Alternative Solutions
 
